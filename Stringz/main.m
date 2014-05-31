@@ -31,6 +31,17 @@ int main(int argc, const char * argv[])
             NSLog(@"writing /tmp/cool.txt failed: %@", [error localizedDescription]);
         }
 
+        NSError *err = nil;
+        NSString *str_in = [[NSString alloc] initWithContentsOfFile:@"/etc/resolv.conf"
+                                                           encoding:NSASCIIStringEncoding
+                                                              error:&err];
+
+        if (!str_in) {
+            NSLog(@"read failed: %@", [err localizedDescription]);
+        } else {
+            NSLog(@"resolv.conf looks like this: %@", str_in);
+        }
+
     }
     return 0;
 }
