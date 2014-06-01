@@ -63,6 +63,9 @@ int main(int argc, const char * argv[])
 
         NSLog(@"success!");
 
+        NSData *readData = [NSData dataWithContentsOfFile:@"/tmp/google.png"];
+        NSLog(@"the file read from disk has %lu bytes", [readData length]);
+
     }
     return 0;
 }
